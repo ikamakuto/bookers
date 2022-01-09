@@ -1,5 +1,13 @@
 <h2>Books</h2>
-<% @books.each do |book| %>
+
+<span>
+  <% @books.each do |book| %>
+  <%= link_to "show", book_path(book.id) %>
+  <%= link_to "edit", edit_book_path(book) %>
+  <%= link_to "destroy", book,"data-confirm" => "Are you sure?" %>
+
+ <%= link_to book.title, "/books/#{book.id}" %>
+  </span>
 <% end %>
 
 <h2>New book</h2>
@@ -12,5 +20,5 @@
   <h5>Body</h5>
   <%= f.text_area :body %>
   
-  <%= f.submit 'Create Book' %>
+  <br><%= f.submit 'Create Book' %></br>
 <% end %>
