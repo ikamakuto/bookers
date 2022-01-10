@@ -1,24 +1,34 @@
 <h2>Books</h2>
 
-<span>
-  <% @books.each do |book| %>
-  <%= link_to "show", book_path(book.id) %>
-  <%= link_to "edit", edit_book_path(book) %>
-  <%= link_to "destroy", book,"data-confirm" => "Are you sure?" %>
-
- <%= link_to book.title, "/books/#{book.id}" %>
-  </span>
-<% end %>
+  <table>
+    <thead>
+      <tr>
+        <th>title</th>
+        <th>body</th>
+      </tr>
+    </thead>
+    <tbody
+     <% @books.each do |book| %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.body %></td>
+        <td><%= link_to "Show", book_path(book.id) %></td>
+        <td><%= link_to "Edit", edit_book_path(book) %></td>
+        <td><%= link_to "Destroy", destroy_book_path(book.id), method: :delete, data: {confirm: "Are you sure?"} %></td>
+      </tr>
+      <% end %>
+     </tbody> 
+</table>
 
 <h2>New book</h2>
 
 <%= form_with model:@book, url:'/books', local:true do |f| %>
   
-  <h5>Title</h5>
+  <%= f.label :title %></br>
   <%= f.text_field :title %>
   
-  <h5>Body</h5>
-  <%= f.text_area :body %>
+  <p><%= f.label :body %></br>
+  <%= f.text_area :body %><p/>
   
   <br><%= f.submit 'Create Book' %></br>
 <% end %>
