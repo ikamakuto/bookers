@@ -1,5 +1,4 @@
 <h2>Editing Book</h2>
-
 <% if @book.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
@@ -19,5 +18,5 @@
         <%= f.text_area :body %><p/>
         <%= f.submit 'Uodate Book' %>
     <p><%= link_to("Show","/books/#{@book.id}") %>｜
-        <%= link_to("Back","/books/index") %></p>
+        <%= link_to("Back",books_index_path) %></p>
 <% end %>
